@@ -3,8 +3,8 @@ import { AuthDto } from './dto/auth.dto';
 import { PrismaService } from './../prisma/prisma.service';
 import { ForbiddenException, Injectable } from '@nestjs/common';
 import * as argon from 'argon2';
-import { PrismaClientKnownRequestError } from '@prisma/client/runtime';
 import { JwtService } from '@nestjs/jwt';
+import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library';
 
 @Injectable()
 export class AuthService {
@@ -33,7 +33,7 @@ export class AuthService {
       if (error instanceof PrismaClientKnownRequestError) {
         if (error.code === 'P2002') {
           throw new ForbiddenException(
-            'Pick a different username, this one already taken!',
+            'Pick a different email, this one already taken!',
           );
         }
       }
