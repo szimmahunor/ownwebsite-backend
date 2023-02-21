@@ -11,7 +11,7 @@ import {
 } from '@nestjs/common';
 import { ProjectService } from './project.service';
 
-@Controller('projects')
+@Controller('/')
 export class ProjectController {
   constructor(private projectService: ProjectService) {}
 

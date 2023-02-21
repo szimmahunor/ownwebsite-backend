@@ -31,6 +31,7 @@ export class ProjectService {
       throw new NotFoundException('There is no project with this id');
     }
 
+    console.log('Successfully fetched project with id: ', id);
     return project;
   }
 
@@ -38,6 +39,7 @@ export class ProjectService {
     // find all projects
     const projects = await this.prisma.project.findMany();
 
+    console.log('Successfully fetched all projects');
     return projects;
   }
 
@@ -50,6 +52,7 @@ export class ProjectService {
       data: updatedField,
     });
 
+    console.log('Successfully updated project with id: ', id);
     return project;
   }
 
@@ -62,6 +65,7 @@ export class ProjectService {
         },
       });
 
+      console.log('Successfully removed project with id: ', id);
       return project;
     } catch (error) {
       if (error instanceof PrismaClientKnownRequestError) {
